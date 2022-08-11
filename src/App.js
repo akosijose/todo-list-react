@@ -20,19 +20,7 @@ function App() {
   };
 
   const handleDeleteTask = (taskName) => {
-    const newTodoList = todoList.filter((task) => {
-      // --------- simple way -----------
-      return task !== taskName;
-
-      // ------------ if statement ----------
-      // if (task === taskName) {
-      //   return false;
-      // } else {
-      //   return true;
-      // }
-    });
-
-    setTodoList(newTodoList);
+    setTodoList(todoList.filter((task) => task !== taskName));
   };
 
   return (

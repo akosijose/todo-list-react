@@ -13,14 +13,16 @@ function App() {
     if (newTask === "") {
       alert("Please add task");
     } else {
-      const newTodoList = [...todoList, newTask];
-      setTodoList(newTodoList);
-      // console.log(todoList);
+      const task = {
+        id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+        taskName: newTask,
+      };
+      setTodoList([...todoList, task]);
     }
   };
 
-  const handleDeleteTask = (taskName) => {
-    setTodoList(todoList.filter((task) => task !== taskName));
+  const handleDeleteTask = (id) => {
+    setTodoList(todoList.filter((task) => task.id !== id));
   };
 
   return (
@@ -33,8 +35,8 @@ function App() {
         {todoList.map((task, key) => {
           return (
             <div key={key}>
-              <h3>{task}</h3>
-              <button onClick={() => handleDeleteTask(task)}>X</button>
+              <h3>{task.taskName}</h3>
+              <button onClick={() => handleDeleteTask(task.id)}>X</button>
             </div>
           );
         })}
